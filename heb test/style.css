@@ -1,0 +1,330 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6; /* Немного другой фон */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Чтобы контейнер был сверху, если контент длинный */
+    min-height: 100vh;
+}
+
+.app-container {
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 850px; /* Немного шире для комфорта */
+    width: 100%;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #4a0e6c; /* Более насыщенный фиолетовый */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+h2#quizTitle {
+    font-size: 1.6em;
+    color: #5a007f;
+}
+
+p#quizDescription {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 1.05em;
+}
+
+/* Стили для выбора теста */
+#test-selector-container {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+#test-selector-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+#testSelector {
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    min-width: 300px;
+    margin-bottom: 15px;
+}
+
+/* Блоки с текстом и вопросами */
+.text-section {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px dashed #e0e0e0; /* Пунктирная линия */
+}
+.text-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.hebrew-text {
+    font-size: 1.25em; /* Чуть крупнее */
+    margin-bottom: 15px;
+    direction: rtl;
+    text-align: right;
+    background-color: #f0f4f8; /* Светло-голубоватый */
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #d1ddef;
+}
+
+.vocabulary {
+    font-size: 0.95em;
+    color: #444;
+    margin-bottom: 20px;
+    padding-left: 0; /* Убираем отступ, т.к. details имеет свой */
+    border-left: none; /* Убираем рамку, details будет сам по себе */
+}
+
+.vocabulary details {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.vocabulary details summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #0066cc; /* Синий для summary */
+    padding: 5px 0;
+}
+.vocabulary details summary:hover {
+    color: #004c99;
+}
+
+.vocabulary ul {
+    list-style-type: none;
+    padding-left: 15px; /* Небольшой отступ для элементов списка */
+    margin-top: 8px;
+}
+.vocabulary li {
+    padding: 3px 0;
+}
+
+.questions {
+    margin-top: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+    background-color: #fdfdfd;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0;
+}
+
+.question p { /* Текст вопроса */
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.options label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s, border-color 0.2s;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+
+.options label:hover {
+    background-color: #e9f5ff; /* Светло-голубой при наведении */
+    border-color: #b3d7ff;
+}
+.options input[type="radio"]:checked + span {
+    font-weight: bold; /* Выделяем выбранный ответ */
+}
+
+
+.options input[type="radio"] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.options input[type="radio"]:disabled + span {
+     color: #777; /* Текст для заблокированных опций */
+}
+.options label input[type="radio"]:disabled {
+    cursor: not-allowed;
+}
+.options label:has(input[type="radio"]:disabled) { /* Стилизация label, если radio внутри disabled */
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    color: #777;
+}
+
+
+.feedback {
+    font-size: 0.95em;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border-left-width: 5px; /* Более заметная полоска */
+    border-left-style: solid;
+}
+
+.correct {
+    color: #155724; /* Dark green */
+    background-color: #d4edda; /* Light green */
+    border-left-color: #28a745; /* Green */
+}
+
+.incorrect {
+    color: #721c24; /* Dark red */
+    background-color: #f8d7da; /* Light red */
+    border-left-color: #dc3545; /* Red */
+}
+
+.unanswered {
+    color: #856404; /* Dark yellow/brown */
+    background-color: #fff3cd; /* Light yellow */
+    border-left-color: #ffc107; /* Yellow */
+}
+
+/* Контейнер результатов */
+#results-container {
+    margin-top: 35px;
+    padding: 25px;
+    background-color: #e9f5ff; /* Light blue */
+    border: 1px solid #b3d7ff;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#results-container h2 {
+    color: #004085; /* Darker blue */
+    font-size: 1.5em;
+}
+
+#results-container p#score-display {
+    font-size: 1.4em; /* Крупнее счет */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+#results-container p#score-display strong { /* Для секретного слова */
+    display: block;
+    margin-top: 10px;
+}
+
+
+#detailed-answers {
+    margin-top: 20px;
+}
+#detailed-answers h3 {
+    text-align: left;
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+#detailed-answers ol {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+#detailed-answers li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa; /* Светлый фон для каждого пункта */
+    border: 1px solid #e9ecef;
+    font-size: 0.95em;
+}
+#detailed-answers li span { /* Для выделения "Верно", "Неверно" */
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+/* Кнопки */
+.button, button { /* Общий стиль для всех кнопок */
+    display: inline-block; /* Для размещения в одну строку, если нужно */
+    padding: 12px 25px;
+    font-size: 1.05em;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out, transform 0.1s ease;
+    text-align: center;
+    margin: 10px 5px; /* Отступы между кнопками */
+}
+.button:hover, button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+.button:active, button:active {
+    transform: translateY(0px);
+}
+
+#startTestButton {
+    background-color: #28a745; /* Зеленая для старта */
+}
+#startTestButton:disabled {
+    background-color: #a1d7b3;
+    cursor: not-allowed;
+}
+
+.submit-button, #submitQuizButton {
+    background-color: #007bff; /* Синяя */
+}
+
+.reset-button, #resetCurrentTestButton, #resetFullAppButton {
+    background-color: #6c757d; /* Серая */
+}
+
+/* Скрытие элементов */
+[style*="display: none"] { /* Чтобы наверняка */
+    display: none !important;
+}
+
+/* Адаптивность (простой пример) */
+@media (max-width: 600px) {
+    .app-container {
+        padding: 15px;
+        margin: 10px;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    #testSelector {
+        min-width: 90%;
+    }
+    .button, button {
+        width: 100%; /* Кнопки на всю ширину на малых экранах */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивные тесты по ивриту</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>Тесты по ивриту</h1>
+        
+        <div id="test-selector-container">
+            <label for="testSelector">Выберите тест:</label>
+            <select id="testSelector">
+                <option value="">-- Загрузка тестов --</option>
+            </select>
+            <button id="startTestButton" disabled>Начать тест</button>
+        </div>
+
+        <div id="quiz-area" style="display:none;">
+            <h2 id="quizTitle"></h2>
+            <p id="quizDescription"></p>
+            <form id="quizForm"></form> <!-- Сюда будут генерироваться тексты и вопросы -->
+            <button type="button" class="submit-button" id="submitQuizButton">Проверить результаты</button>
+            <button type="button" class="reset-button" id="resetCurrentTestButton" style="display: none;">Попробовать этот тест снова</button>
+        </div>
+
+        <div id="results-container" style="display: none;">
+            <h2>Ваши результаты:</h2>
+            <p id="score-display"></p>
+            <div id="detailed-answers"></div>
+        </div>
+         <button type="button" class="reset-button" id="resetFullAppButton" style="display: none;">Выбрать другой тест (полный сброс)</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

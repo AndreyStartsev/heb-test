@@ -3,37 +3,550 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерактивные тесты по ивриту</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Тест по ивриту - Продвинутый</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; margin: 0; padding: 20px; background-color: #f0f2f5; color: #333; }
+        .quiz-container { background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 850px; margin: 20px auto; }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; border-bottom: 2px solid #bdc3c7; padding-bottom: 8px;}
+        .quiz-intro { text-align: center; margin-bottom: 25px; font-size: 1.1em; color: #555; }
+        .attempt-counter { text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 1.1em; color: #e67e22; }
+        .text-section { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px dashed #ecf0f1; }
+        .text-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .hebrew-text { font-size: 1.25em; margin-bottom: 12px; direction: rtl; text-align: right; background-color: #f9f9f9; padding: 12px; border-radius: 6px; border: 1px solid #e0e0e0;}
+        .vocabulary { font-size: 0.95em; color: #555; margin-bottom: 18px; padding-left: 20px; border-left: 3px solid #3498db; }
+        .vocabulary details summary { cursor: pointer; font-weight: bold; color: #2980b9; margin-bottom: 5px;}
+        .vocabulary ul { padding-left: 20px; margin-top: 5px; }
+        .question { margin-bottom: 18px; }
+        .question p { margin-bottom: 8px; font-weight: 600; font-size: 1.05em;}
+        .options label { display: block; margin-bottom: 6px; cursor: pointer; padding: 10px; border-radius: 5px; transition: background-color 0.2s, border-color 0.2s; border: 1px solid #ddd; }
+        .options label:hover { background-color: #eaf5ff; border-color: #a3cfff; }
+        .options input[type="radio"] { margin-right: 10px; vertical-align: middle; }
+        .options input[type="radio"]:disabled + span { color: #7f8c8d; }
+        .feedback { font-size: 0.95em; font-weight: bold; margin-top: 8px; padding: 10px; border-radius: 5px; border-left-width: 5px; border-left-style: solid; }
+        .correct { color: #27ae60; background-color: #e8f5e9; border-left-color: #27ae60; }
+        .incorrect { color: #c0392b; background-color: #fdedec; border-left-color: #c0392b; }
+        .unanswered { color: #f39c12; background-color: #fff8e1; border-left-color: #f39c12; }
+        #results-container { margin-top: 35px; padding: 25px; background-color: #e9f7ef; border: 1px solid #a3d9b8; border-radius: 10px; text-align: center; }
+        #results-container h2 { color: #16a085; }
+        #results-container p#score-display { font-size: 1.4em; font-weight: bold; margin-bottom: 18px; }
+        #detailed-answers ol { list-style-type: none; padding-left: 0; text-align: left; }
+        #detailed-answers li { padding: 12px; margin-bottom: 10px; border-radius: 5px; background-color: #fdfdfd; border: 1px solid #e4e4e4; font-size: 0.95em;}
+        .button-container { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
+        .submit-button, .reset-button { width: auto; min-width: 200px; padding: 12px 25px; font-size: 1.1em; color: white; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease, transform 0.1s ease; }
+        .submit-button { background-color: #3498db; }
+        .submit-button:hover { background-color: #2980b9; }
+        .submit-button:active, .reset-button:active { transform: translateY(1px); }
+        .reset-button { background-color: #e74c3c; }
+        .reset-button:hover { background-color: #c0392b; }
+        .secret-word { font-size: 1.5em; color: #2ecc71; font-weight: bold; margin-top: 15px; padding:10px; background-color: #e8f8f5; border-radius:5px; display:inline-block;}
+    </style>
 </head>
 <body>
-    <div class="app-container">
-        <h1>Тесты по ивриту</h1>
+
+<div class="quiz-container">
+    <h1>Тест по ивриту (20 вопросов)</h1>
+    <p class="quiz-intro">За каждый правильный ответ начисляется 6 баллов. Максимум 120 баллов.<br>Секретное слово выдается при наборе более 100 баллов. У вас 3 попытки на проверку.</p>
+    <div id="attempt-counter-display" class="attempt-counter"></div>
+
+    <form id="quizForm">
+        <!-- Блок 1: Покупки (1-4) -->
+        <div class="text-section">
+            <h2>Блок 1: Покупки</h2>
+            <div class="question">
+                <div class="hebrew-text">דָנָה הָלְכָה לַשּׁוּק. הִיא קָנְתָה 3 קִילוֹ תַּפּוּחִים. כָּל קִילוֹ עוֹלֶה 7 שְׁקָלִים. הִיא גַם קָנְתָה 2 חֲבִילוֹת תּוּתִים, כָּל חֲבִילָה בְּ-10 שְׁקָלִים.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>שׁוּק (шук) - рынок</li><li>קִילוֹ (ки́ло) - килограмм</li><li>תַּפּוּחִים (тапухи́м) - яблоки</li><li>עוֹלֶה (оле́) - стоит (м.р.)</li><li>חֲבִילָה (хавила́) - упаковка, пачка</li><li>תּוּתִים (тути́м) - клубника</li></ul></details></div>
+                <p>1. כַּמָה שִׁלְמָה דָנָה עֲבוּר הַתַּפּוּחִים? (Сколько Дана заплатила за яблоки?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="A"><span> А) 7 שקלים</span></label>
+                    <label><input type="radio" name="q1" value="B"><span> Б) 14 שקלים</span></label>
+                    <label><input type="radio" name="q1" value="C"><span> В) 21 שקלים</span></label>
+                    <label><input type="radio" name="q1" value="D"><span> Г) 10 שקלים</span></label>
+                </div><div class="feedback" id="feedback-q1"></div>
+            </div>
+            <div class="question">
+                 <p>2. כַּמָה שִׁלְמָה דָנָה עֲבוּר הַתּוּתִים? (Сколько Дана заплатила за клубнику?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"><span> А) 10 שקלים</span></label>
+                    <label><input type="radio" name="q2" value="B"><span> Б) 20 שקלים</span></label>
+                    <label><input type="radio" name="q2" value="C"><span> В) 30 שקלים</span></label>
+                    <label><input type="radio" name="q2" value="D"><span> Г) 12 שקלים</span></label>
+                </div><div class="feedback" id="feedback-q2"></div>
+            </div>
+            <div class="question">
+                <p>3. כַּמָה שִׁלְמָה דָנָה סַךְ הַכֹּל בַּשּׁוּק? (Сколько Дана заплатила всего на рынке?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="A"><span> А) 27 שקלים</span></label>
+                    <label><input type="radio" name="q3" value="B"><span> Б) 31 שקלים</span></label>
+                    <label><input type="radio" name="q3" value="C"><span> В) 41 שקלים</span></label>
+                    <label><input type="radio" name="q3" value="D"><span> Г) 51 שקלים</span></label>
+                </div><div class="feedback" id="feedback-q3"></div>
+            </div>
+            <div class="question">
+                <div class="hebrew-text">יוֹסִי רָצָה לִקְנוֹת 5 עִפְּרוֹנוֹת. כָּל עִפָּרוֹן עוֹלֶה 3 שְׁקָלִים. הָיָה לוֹ בָּאַרְנָק 20 שְׁקָלִים.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>עִפָּרוֹן (ипаро́н) - карандаш (мн.ч. עֶפְרוֹנוֹת - эфроно́т)</li><li>אַרְנָק (арна́к) - кошелек</li></ul></details></div>
+                <p>4. כַּמָה כֶּסֶף יִשָׁאֵר לְיוֹסִי אַחֲרֵי שֶׁיִקְנֶה אֶת הָעֶפְרוֹנוֹת? (Сколько денег останется у Йоси после покупки карандашей?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="A"><span> А) 3 שקלים</span></label>
+                    <label><input type="radio" name="q4" value="B"><span> Б) 5 שקלים</span></label>
+                    <label><input type="radio" name="q4" value="C"><span> В) 15 שקלים</span></label>
+                    <label><input type="radio" name="q4" value="D"><span> Г) 20 שקלים</span></label>
+                </div><div class="feedback" id="feedback-q4"></div>
+            </div>
+        </div>
+
+        <!-- Блок 2: Распорядок дня и время (5-8) -->
+        <div class="text-section">
+            <h2>Блок 2: Распорядок дня и время</h2>
+            <div class="question">
+                <div class="hebrew-text">שָׂרָה קָמָה בְּשָׁעָה 07:00. הִיא אוֹכֶלֶת אֲרוּחַת בֹּקֶר בְּמֶשֶׁךְ 20 דַּקוֹת. אַחַר כָּךְ הִיא מִתְאַרְגֶּנֶת לְבֵית הַסֵּפֶר 25 דַּקוֹת.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>קָמָה (ка́ма) - встает (ж.р.)</li><li>בְּמֶשֶׁךְ (бэ-мэ́шех) - в течение</li><li>דַּקוֹת (дако́т) - минуты</li><li>מִתְאַרְגֶּנֶת (мит'арге́нет) - собирается, организуется (ж.р.)</li></ul></details></div>
+                <p>5. בְּאֵיזוֹ שָׁעָה שָׂרָה מְסַיֶּמֶת לְהִתְאַרְגֵּן לְבֵית הַסֵּפֶר? (Во сколько Сара заканчивает собираться в школу?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="A"><span> А) 07:20</span></label>
+                    <label><input type="radio" name="q5" value="B"><span> Б) 07:25</span></label>
+                    <label><input type="radio" name="q5" value="C"><span> В) 07:45</span></label>
+                    <label><input type="radio" name="q5" value="D"><span> Г) 08:00</span></label>
+                </div><div class="feedback" id="feedback-q5"></div>
+            </div>
+            <div class="question">
+                <div class="hebrew-text">הַשִׁיעוּר מַתְחִיל בְּ-08:30 וְנִמְשָׁךְ שָׁעָה וּרְבַע.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>מַתְחִיל (матхи́ль) - начинается</li><li>נִמְשָׁךְ (нимша́х) - длится</li><li>שָׁעָה וּרְבַע (шаа́ у-рэ́ва) - час с четвертью (1 час 15 минут)</li></ul></details></div>
+                <p>6. מָתַי הַשִׁיעוּר מִסְתַּיֵם? (Когда заканчивается урок?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="A"><span> А) 09:30</span></label>
+                    <label><input type="radio" name="q6" value="B"><span> Б) 09:45</span></label>
+                    <label><input type="radio" name="q6" value="C"><span> В) 10:00</span></label>
+                    <label><input type="radio" name="q6" value="D"><span> Г) 09:15</span></label>
+                </div><div class="feedback" id="feedback-q6"></div>
+            </div>
+             <div class="question">
+                <div class="hebrew-text">אָבִיב עוֹבֵד 8 שָׁעוֹת בְּיוֹם, 5 יָמִים בַּשָׁבוּעַ.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>אָבִיב (Ави́в) - имя / весна</li><li>עוֹבֵד (ове́д) - работает (м.р.)</li><li>שָׁעוֹת (шао́т) - часы</li><li>יוֹם (йом) - день</li><li>שָׁבוּעַ (шаву́а) - неделя</li></ul></details></div>
+                <p>7. כַּמָה שָׁעוֹת אָבִיב עוֹבֵד בְּשָׁבוּעַ? (Сколько часов Авив работает в неделю?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="A"><span> А) 30 שעות</span></label>
+                    <label><input type="radio" name="q7" value="B"><span> Б) 35 שעות</span></label>
+                    <label><input type="radio" name="q7" value="C"><span> В) 40 שעות</span></label>
+                    <label><input type="radio" name="q7" value="D"><span> Г) 45 שעות</span></label>
+                </div><div class="feedback" id="feedback-q7"></div>
+            </div>
+            <div class="question">
+                <div class="hebrew-text">הַסֶרֶט בַּקוֹלְנוֹעַ מַתְחִיל בְּשָׁעָה 19:15. הוּא נִמְשָׁךְ 110 דַּקוֹת.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>סֶרֶט (сэ́рэт) - фильм</li><li>קוֹלְנוֹעַ (кольнóа) - кинотеатр</li></ul></details></div>
+                <p>8. בְּאֵיזוֹ שָׁעָה הַסֶרֶט יִגָּמֵר? (Во сколько закончится фильм?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="A"><span> А) 20:05</span></label>
+                    <label><input type="radio" name="q8" value="B"><span> Б) 20:55</span></label>
+                    <label><input type="radio" name="q8" value="C"><span> В) 21:05</span></label>
+                    <label><input type="radio" name="q8" value="D"><span> Г) 21:15</span></label>
+                </div><div class="feedback" id="feedback-q8"></div>
+            </div>
+        </div>
+
+        <!-- Блок 3: Семья и возраст (9-12) -->
+        <div class="text-section">
+            <h2>Блок 3: Семья и возраст</h2>
+            <div class="question">
+                <div class="hebrew-text">לְמִשְׁפַּחַת לֵוִי יֵשׁ 3 יְלָדִים. הַבֵּן הַבְּכוֹר בֶּן 12. הַבַּת הָאֶמְצָעִית קְטַנָה מִמֶנוּ בְּ-4 שָׁנִים. הַבֵּן הַצָעִיר בֶּן חֲצִי מִגִילָה שֶׁל הַבַּת.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>יְלָדִים (елади́м) - дети</li><li>בֵּן (бэн) - сын / ... лет (для м.р.)</li><li>בַּת (бат) - дочь / ... лет (для ж.р.)</li><li>בְּכוֹр (бэхо́р) - старший (сын)</li><li>אֶמְצָעִית (эмцаи́т) - средняя (дочь)</li><li>קְטַנָה מִמֶנוּ (ктана́ миме́ну) - младше него (для ж.р.)</li><li>צָעִיר (цаи́р) - младший (сын)</li><li>חֲצִי (хэци́) - половина</li><li>גִיל (гиль) - возраст</li></ul></details></div>
+                <p>9. בַּת כַּמָה הַבַּת הָאֶמְצָעִית? (Сколько лет средней дочери?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="A"><span> А) 4</span></label>
+                    <label><input type="radio" name="q9" value="B"><span> Б) 6</span></label>
+                    <label><input type="radio" name="q9" value="C"><span> В) 8</span></label>
+                    <label><input type="radio" name="q9" value="D"><span> Г) 10</span></label>
+                </div><div class="feedback" id="feedback-q9"></div>
+            </div>
+            <div class="question">
+                 <p>10. בֶּן כַּמָה הַבֵּן הַצָעִיר? (Сколько лет младшему сыну?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="A"><span> А) 2</span></label>
+                    <label><input type="radio" name="q10" value="B"><span> Б) 3</span></label>
+                    <label><input type="radio" name="q10" value="C"><span> В) 4</span></label>
+                    <label><input type="radio" name="q10" value="D"><span> Г) 6</span></label>
+                </div><div class="feedback" id="feedback-q10"></div>
+            </div>
+            <div class="question">
+                <div class="hebrew-text">רוֹנִי בֶּן 30. אִשְׁתּוֹ, רִינָה, בַּת 28. יֵשׁ לָהֶם תִינוֹק בֶּן שָׁנָה.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>אִשְׁתּוֹ (ишто́) - его жена</li><li>תִינוֹק (тино́к) - младенец</li><li>שָׁנָה (шана́) - год</li></ul></details></div>
+                <p>11. מָה סְכוּם הַגִילָאִים שֶׁל רוֹנִי וְרִינָה? (Какова сумма возрастов Рони и Рины?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="A"><span> А) 50</span></label>
+                    <label><input type="radio" name="q11" value="B"><span> Б) 56</span></label>
+                    <label><input type="radio" name="q11" value="C"><span> В) 58</span></label>
+                    <label><input type="radio" name="q11" value="D"><span> Г) 60</span></label>
+                </div><div class="feedback" id="feedback-q11"></div>
+            </div>
+             <div class="question">
+                <p>12. בְּכַמָה שָׁנִים רוֹנִי גָדוֹל מֵרִינָה? (На сколько лет Рони старше Рины?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="A"><span> А) שנה אחת</span></label>
+                    <label><input type="radio" name="q12" value="B"><span> Б) שנתיים</span></label>
+                    <label><input type="radio" name="q12" value="C"><span> В) 3 שנים</span></label>
+                    <label><input type="radio" name="q12" value="D"><span> Г) 4 שנים</span></label>
+                </div><div class="feedback" id="feedback-q12"></div>
+            </div>
+        </div>
         
-        <div id="test-selector-container">
-            <label for="testSelector">Выберите тест:</label>
-            <select id="testSelector">
-                <option value="">-- Загрузка тестов --</option>
-            </select>
-            <button id="startTestButton" disabled>Начать тест</button>
+        <!-- Блок 4: Хобби и количества (13-16) -->
+        <div class="text-section">
+            <h2>Блок 4: Хобби и количества</h2>
+            <div class="question">
+                <div class="hebrew-text">תָּמָר אוֹסֶפֶת בּוּלִים. יֵשׁ לָה 3 אַלְבּוֹמִים. בְּכָל אַלְבּוֹם 50 בּוּלִים. הִיא קִבְּלָה הַיוֹם עוֹד 15 בּוּלִים חֲדָשִׁים.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>אוֹסֶפֶת (осэ́фэт) - собирает (коллекционирует, ж.р.)</li><li>בּוּלִים (були́м) - марки</li><li>אַלְבּוֹם (альбо́м) - альбом</li><li>קִבְּלָה (кибла́) - получила</li><li>עוֹד (од) - еще</li></ul></details></div>
+                <p>13. כַּמָה בּוּלִים הָיוּ לְתָמָר בָּאַלְבּוֹמִים לִפְנֵי שֶׁקִבְּלָה אֶת הַחֲדָשִׁים? (Сколько марок было у Тамар в альбомах до того, как она получила новые?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="A"><span> А) 50</span></label>
+                    <label><input type="radio" name="q13" value="B"><span> Б) 100</span></label>
+                    <label><input type="radio" name="q13" value="C"><span> В) 150</span></label>
+                    <label><input type="radio" name="q13" value="D"><span> Г) 165</span></label>
+                </div><div class="feedback" id="feedback-q13"></div>
+            </div>
+            <div class="question">
+                <p>14. כַּמָה בּוּלִים יֵשׁ לְתָמָר עַכְשָׁיו סַךְ הַכֹּל? (Сколько всего марок у Тамар сейчас?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="A"><span> А) 150</span></label>
+                    <label><input type="radio" name="q14" value="B"><span> Б) 155</span></label>
+                    <label><input type="radio" name="q14" value="C"><span> В) 165</span></label>
+                    <label><input type="radio" name="q14" value="D"><span> Г) 180</span></label>
+                </div><div class="feedback" id="feedback-q14"></div>
+            </div>
+            <div class="question">
+                <div class="hebrew-text">בַּכִּיתָה לוֹמְדִים 28 תַלְמִידִים. הַיוֹם חָסְרִים 3 תַלְמִידִים. הַמוֹרָה חִילְקָה אֶת הַתַלְמִידִים הַנוֹכְחִים ל-5 קְבוּצוֹת שָׁווֹת.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>כִּיתָה (кита́) - класс</li><li>תַלְמִידִים (талмиди́м) - ученики</li><li>חָסְרִים (хасэри́м) - отсутствуют</li><li>מוֹרָה (мора́) - учительница</li><li>חִילְקָה (хилька́) - разделила</li><li>נוֹכְחִים (нохэхи́м) - присутствующие</li><li>קְבוּצוֹת (квуцо́т) - группы</li><li>שָׁווֹת (шаво́т) - равные</li></ul></details></div>
+                <p>15. כַּמָה תַלְמִידִים הָיוּ נוֹכְחִים בַּשִׁיעוּר? (Сколько учеников присутствовало на уроке?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="A"><span> А) 23</span></label>
+                    <label><input type="radio" name="q15" value="B"><span> Б) 25</span></label>
+                    <label><input type="radio" name="q15" value="C"><span> В) 28</span></label>
+                    <label><input type="radio" name="q15" value="D"><span> Г) 31</span></label>
+                </div><div class="feedback" id="feedback-q15"></div>
+            </div>
+            <div class="question">
+                <p>16. כַּמָה תַלְמִידִים הָיוּ בְּכָל קְבוּצָה? (Сколько учеников было в каждой группе?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q16" value="A"><span> А) 4</span></label>
+                    <label><input type="radio" name="q16" value="B"><span> Б) 5</span></label>
+                    <label><input type="radio" name="q16" value="C"><span> В) 6</span></label>
+                    <label><input type="radio" name="q16" value="D"><span> Г) 7</span></label>
+                </div><div class="feedback" id="feedback-q16"></div>
+            </div>
         </div>
 
-        <div id="quiz-area" style="display:none;">
-            <h2 id="quizTitle"></h2>
-            <p id="quizDescription"></p>
-            <form id="quizForm"></form> <!-- Сюда будут генерироваться тексты и вопросы -->
-            <button type="button" class="submit-button" id="submitQuizButton">Проверить результаты</button>
-            <button type="button" class="reset-button" id="resetCurrentTestButton" style="display: none;">Попробовать этот тест снова</button>
+        <!-- Блок 5: Общие вопросы (17-20) -->
+        <div class="text-section">
+            <h2>Блок 5: Общие вопросы</h2>
+            <div class="question">
+                <div class="hebrew-text">בְּגִינָה יֵשׁ 12 פְּרָחִים אֲדוּמִים, 8 פְּרָחִים צְהוּבִּים וְ-5 פְּרָחִים לְבָנִים.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>גִינָה (гина́) - сад, садик</li><li>פְּרָחִים (прахи́м) - цветы</li><li>אֲדוּמִים (адуми́м) - красные</li><li>צְהוּבִּים (цээуби́м) - желтые</li><li>לְבָנִים (лэвани́м) - белые</li></ul></details></div>
+                <p>17. כַּמָה פְּרָחִים יֵשׁ בַּגִינָה סַךְ הַכֹּל? (Сколько всего цветов в саду?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q17" value="A"><span> А) 20</span></label>
+                    <label><input type="radio" name="q17" value="B"><span> Б) 23</span></label>
+                    <label><input type="radio" name="q17" value="C"><span> В) 25</span></label>
+                    <label><input type="radio" name="q17" value="D"><span> Г) 30</span></label>
+                </div><div class="feedback" id="feedback-q17"></div>
+            </div>
+             <div class="question">
+                <div class="hebrew-text">לְאִיתַי יֵשׁ 4 קֻפְסָאוֹת. בְּכָל קֻפְסָה 6 כַּדוּרִים קְטַנִים. הוּא אִיבֵּד 3 כַּדוּרִים.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>אִיתַי (Ита́й) - имя</li><li>קֻפְסָה (куфса́) - коробка (мн.ч. קֻפְסָאוֹת - куфсао́т)</li><li>כַּדוּר (каду́р) - мяч, шарик (мн.ч. כַּדוּרִים - кадури́м)</li><li>אִיבֵּד (ибе́д) - потерял</li></ul></details></div>
+                <p>18. כַּמָה כַּדוּרִים הָיוּ לְאִיתַי בַּהַתְחָלָה (לִפְנֵי שֶׁאִיבֵּד)? (Сколько шариков было у Итая сначала (до того, как потерял)?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q18" value="A"><span> А) 18</span></label>
+                    <label><input type="radio" name="q18" value="B"><span> Б) 20</span></label>
+                    <label><input type="radio" name="q18" value="C"><span> В) 24</span></label>
+                    <label><input type="radio" name="q18" value="D"><span> Г) 27</span></label>
+                </div><div class="feedback" id="feedback-q18"></div>
+            </div>
+            <div class="question">
+                <p>19. כַּמָה כַּדוּרִים נִשְׁאֲרוּ לְאִיתַי? (Сколько шариков осталось у Итая?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q19" value="A"><span> А) 15</span></label>
+                    <label><input type="radio" name="q19" value="B"><span> Б) 17</span></label>
+                    <label><input type="radio" name="q19" value="C"><span> В) 21</span></label>
+                    <label><input type="radio" name="q19" value="D"><span> Г) 24</span></label>
+                </div><div class="feedback" id="feedback-q19"></div>
+            </div>
+             <div class="question">
+                <div class="hebrew-text">בַּמְּקוֹם הָרִאשׁוֹן בְּתַחֲרוּת זָכָה רָץ שֶׁסִייֵם אֶת הַמַסְלוּל בְּ-150 שְׁנִיוֹת. הָרָץ בַּמָּקוֹם הַשֵׁנִי סִייֵם 12 שְׁנִיוֹת אַחֲרָיו.</div>
+                <div class="vocabulary"><details><summary>Словарик:</summary><ul><li>מָקוֹם רִאשׁוֹן (мако́м ришо́н) - первое место</li><li>תַחֲרוּת (тахару́т) - соревнование</li><li>זָכָה (заха́) - выиграл, удостоился</li><li>רָץ (рац) - бегун</li><li>סִייֵם (сие́м) - закончил</li><li>מַסְלוּל (маслу́ль) - трасса, маршрут</li><li>שְׁנִיוֹת (шнийо́т) - секунды</li><li>מָקוֹם שֵׁנִי (мако́м шени́) - второе место</li><li>אַחֲרָיו (ахара́в) - после него</li></ul></details></div>
+                <p>20. כַּמָה זְמַן לָקַח לָרָץ בַּמָּקוֹם הַשֵׁנִי לְסַיֵם אֶת הַמַסְלוּל (בִּשְׁנִיוֹת)? (Сколько времени заняло у бегуна на втором месте закончить трассу (в секундах)?)</p>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="A"><span> А) 138 שניות</span></label>
+                    <label><input type="radio" name="q20" value="B"><span> Б) 150 שניות</span></label>
+                    <label><input type="radio" name="q20" value="C"><span> В) 162 שניות</span></label>
+                    <label><input type="radio" name="q20" value="D"><span> Г) 12 שניות</span></label>
+                </div><div class="feedback" id="feedback-q20"></div>
+            </div>
         </div>
 
-        <div id="results-container" style="display: none;">
-            <h2>Ваши результаты:</h2>
-            <p id="score-display"></p>
-            <div id="detailed-answers"></div>
+        <div class="button-container">
+            <button type="button" class="submit-button" onclick="submitQuiz()">Проверить результаты</button>
+            <button type="button" class="reset-button" onclick="resetFullQuiz()" style="display: none;">Начать тест заново (полный сброс)</button>
         </div>
-         <button type="button" class="reset-button" id="resetFullAppButton" style="display: none;">Выбрать другой тест (полный сброс)</button>
+    </form>
+
+    <div id="results-container" style="display: none;">
+        <h2>Ваши результаты:</h2>
+        <p id="score-display"></p>
+        <div id="detailed-answers"></div>
     </div>
+</div>
 
-    <script src="app.js"></script>
+<script>
+    const correctAnswers = {
+        q1: 'C', q2: 'B', q3: 'C', q4: 'B', 
+        q5: 'C', q6: 'B', q7: 'C', q8: 'C',
+        q9: 'C', q10: 'C', q11: 'C', q12: 'B',
+        q13: 'C', q14: 'C', q15: 'B', q16: 'B',
+        q17: 'C', q18: 'C', q19: 'C', q20: 'C'
+    };
+
+    const answerDisplayTexts = {
+        q1: {A: "А) 7 שקלים", B: "Б) 14 שקלים", C: "В) 21 שקלים", D: "Г) 10 שקלים", explanation: "(3 кг * 7 шек/кг = 21 шек)"},
+        q2: {A: "А) 10 שקלים", B: "Б) 20 שקלים", C: "В) 30 שקלים", D: "Г) 12 שקלים", explanation: "(2 уп. * 10 шек/уп. = 20 шек)"},
+        q3: {A: "А) 27 שקלים", B: "Б) 31 שקלים", C: "В) 41 שקלים", D: "Г) 51 שקלים", explanation: "(21 шек (яблоки) + 20 шек (клубника) = 41 шек)"},
+        q4: {A: "А) 3 שקלים", B: "Б) 5 שקלים", C: "В) 15 שקלים", D: "Г) 20 שקלים", explanation: "(Карандаши: 5 * 3 = 15 шек. Остаток: 20 - 15 = 5 шек)"},
+        q5: {A: "А) 07:20", B: "Б) 07:25", C: "В) 07:45", D: "Г) 08:00", explanation: "(07:00 + 20 мин (завтрак) + 25 мин (сборы) = 07:45)"},
+        q6: {A: "А) 09:30", B: "Б) 09:45", C: "В) 10:00", D: "Г) 09:15", explanation: "(08:30 + 1 час 15 мин = 09:45)"},
+        q7: {A: "А) 30 שעות", B: "Б) 35 שעות", C: "В) 40 שעות", D: "Г) 45 שעות", explanation: "(8 часов/день * 5 дней/неделю = 40 часов)"},
+        q8: {A: "А) 20:05", B: "Б) 20:55", C: "В) 21:05", D: "Г) 21:15", explanation: "(110 мин = 1 час 50 мин. 19:15 + 1 час 50 мин = 21:05)"},
+        q9: {A: "А) 4", B: "Б) 6", C: "В) 8", D: "Г) 10", explanation: "(12 лет (старший) - 4 года = 8 лет)"},
+        q10: {A: "А) 2", B: "Б) 3", C: "В) 4", D: "Г) 6", explanation: "(Возраст дочери 8 лет. Половина от 8 = 4 года)"},
+        q11: {A: "А) 50", B: "Б) 56", C: "В) 58", D: "Г) 60", explanation: "(30 лет (Рони) + 28 лет (Рина) = 58 лет)"},
+        q12: {A: "А) שנה אחת", B: "Б) שנתיים", C: "В) 3 שנים", D: "Г) 4 שנים", explanation: "(30 лет (Рони) - 28 лет (Рина) = 2 года)"},
+        q13: {A: "А) 50", B: "Б) 100", C: "В) 150", D: "Г) 165", explanation: "(3 альбома * 50 марок/альбом = 150 марок)"},
+        q14: {A: "А) 150", B: "Б) 155", C: "В) 165", D: "Г) 180", explanation: "(150 марок (в альбомах) + 15 новых = 165 марок)"},
+        q15: {A: "А) 23", B: "Б) 25", C: "В) 28", D: "Г) 31", explanation: "(28 учеников - 3 отсутствующих = 25 присутствующих)"},
+        q16: {A: "А) 4", B: "Б) 5", C: "В) 6", D: "Г) 7", explanation: "(25 присутствующих / 5 групп = 5 учеников/группа)"},
+        q17: {A: "А) 20", B: "Б) 23", C: "В) 25", D: "Г) 30", explanation: "(12 красных + 8 желтых + 5 белых = 25 цветов)"},
+        q18: {A: "А) 18", B: "Б) 20", C: "В) 24", D: "Г) 27", explanation: "(4 коробки * 6 шариков/коробка = 24 шарика)"},
+        q19: {A: "А) 15", B: "Б) 17", C: "В) 21", D: "Г) 24", explanation: "(24 шарика (было) - 3 потерянных = 21 шарик)"},
+        q20: {A: "А) 138 שניות", B: "Б) 150 שניות", C: "В) 162 שניות", D: "Г) 12 שניות", explanation: "(150 сек (1-е место) + 12 сек = 162 сек)"}
+    };
+
+    const pointsPerQuestion = 6;
+    const totalQuestions = Object.keys(correctAnswers).length;
+    const secretWordThreshold = 100; // Порог для секретного слова
+    const secretWord = "תִקְרָה"; // потолок
+    const maxAttemptsPerCycle = 3;
+
+    let correctlyAnsweredInSession = {};
+    let currentAttemptInCycle = 0;
+
+    function updateAttemptCounterDisplay() {
+        const attemptDisplay = document.getElementById('attempt-counter-display');
+        if (currentAttemptInCycle < maxAttemptsPerCycle) {
+            attemptDisplay.textContent = `Попытка проверки: ${currentAttemptInCycle + 1} из ${maxAttemptsPerCycle}`;
+        } else {
+            attemptDisplay.textContent = `Попытки исчерпаны.`;
+        }
+    }
+
+    function submitQuiz() {
+        currentAttemptInCycle++;
+        updateAttemptCounterDisplay();
+
+        let currentTotalScore = 0;
+        const form = document.getElementById('quizForm');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreDisplay = document.getElementById('score-display');
+        const detailedAnswersDiv = document.getElementById('detailed-answers');
+        const submitButton = document.querySelector('.submit-button');
+        const resetButton = document.querySelector('.reset-button');
+        
+        // Сначала очищаем все текущие фидбеки, чтобы они не накапливались от предыдущих попыток в цикле
+        for (let i = 1; i <= totalQuestions; i++) {
+             const feedbackEl = document.getElementById('feedback-q' + i);
+             if (feedbackEl && !correctlyAnsweredInSession['q' + i]) { // Очищаем только для не заблокированных
+                 feedbackEl.textContent = '';
+                 feedbackEl.className = 'feedback';
+             }
+        }
+
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const questionName = 'q' + i;
+            const radioGroup = form.elements[questionName];
+            const feedbackEl = document.getElementById('feedback-' + questionName);
+            
+            if (correctlyAnsweredInSession[questionName]) {
+                currentTotalScore += pointsPerQuestion;
+                // фидбек и блокировка уже установлены
+                continue; 
+            }
+
+            const userAnswer = radioGroup ? radioGroup.value : "";
+
+            if (userAnswer) {
+                if (userAnswer === correctAnswers[questionName]) {
+                    currentTotalScore += pointsPerQuestion;
+                    correctlyAnsweredInSession[questionName] = true;
+                    feedbackEl.textContent = 'Верно!';
+                    feedbackEl.className = 'feedback correct';
+                } else {
+                    // correctlyAnsweredInSession[questionName] остается false или undefined
+                    feedbackEl.textContent = 'Неверно.';
+                    feedbackEl.className = 'feedback incorrect';
+                }
+            } else {
+                feedbackEl.textContent = 'Нет ответа.';
+                feedbackEl.className = 'feedback unanswered';
+            }
+        }
+
+        scoreDisplay.textContent = `Вы набрали: ${currentTotalScore} из ${totalQuestions * pointsPerQuestion} баллов.`;
+        resultsContainer.style.display = 'block';
+        let reportHtml = "";
+
+        if (currentTotalScore > secretWordThreshold) {
+            scoreDisplay.innerHTML += `<br><strong class="secret-word">Поздравляем! Ваше секретное слово: ${secretWord}</strong>`;
+            
+            reportHtml = '<h3>Детализация ответов (Победа!):</h3><ol>';
+            for (let i = 1; i <= totalQuestions; i++) {
+                const qName = 'q' + i;
+                const radios = form.elements[qName];
+                let userAnswerVal = "";
+                if(radios){ for(const radio of radios) { if(radio.checked) userAnswerVal = radio.value; }}
+
+                reportHtml += `<li>Вопрос ${i}: `;
+                if (correctlyAnsweredInSession[qName]) {
+                     reportHtml += `<span class="correct">Верно.</span> Ваш ответ: "${answerDisplayTexts[qName][correctAnswers[qName]]}"`;
+                     if (answerDisplayTexts[qName].explanation) reportHtml += ` ${answerDisplayTexts[qName].explanation}`;
+                } else { 
+                    reportHtml += `<span class="incorrect">Неверно.</span> `;
+                    if(userAnswerVal && answerDisplayTexts[qName][userAnswerVal]) {
+                        reportHtml += `Ваш ответ был: "${answerDisplayTexts[qName][userAnswerVal]}". `;
+                    }
+                    reportHtml += `Правильный ответ: "${answerDisplayTexts[qName][correctAnswers[qName]]}"`;
+                    if (answerDisplayTexts[qName].explanation) reportHtml += ` ${answerDisplayTexts[qName].explanation}`;
+                }
+                reportHtml += `</li>`;
+            }
+            reportHtml += '</ol>';
+            detailedAnswersDiv.innerHTML = reportHtml;
+
+            for (let i = 1; i <= totalQuestions; i++) { // Блокируем все вопросы окончательно
+                const qName = 'q' + i;
+                const radios = form.elements[qName];
+                if (radios) { for (const radio of radios) radio.disabled = true; }
+            }
+            submitButton.style.display = 'none';
+            resetButton.style.display = 'block';
+
+        } else { // currentTotalScore <= secretWordThreshold
+            if (currentAttemptInCycle < maxAttemptsPerCycle) {
+                scoreDisplay.innerHTML += `<br><span style="color:red;">Попробуйте еще раз улучшить результат! Осталось попыток: ${maxAttemptsPerCycle - currentAttemptInCycle}</span>`;
+                
+                reportHtml = '<h3>Результаты текущей попытки:</h3><ol>';
+                 for (let i = 1; i <= totalQuestions; i++) {
+                    const qName = 'q' + i;
+                    const radios = form.elements[qName];
+                    let userAnswerVal = "";
+                     if (radios && !correctlyAnsweredInSession[qName]) { // Только для активных (не заблокированных ранее как правильные)
+                         for(const radio of radios) { if(radio.checked) userAnswerVal = radio.value; }
+                     }
+
+                    reportHtml += `<li>Вопрос ${i}: `;
+                    if (correctlyAnsweredInSession[qName]) { // Если стал правильным в этой попытке или был ранее
+                         reportHtml += `<span class="correct">Верно.</span> Ответ: "${answerDisplayTexts[qName][correctAnswers[qName]]}".`;
+                    } else if (userAnswerVal) { // Неверный ответ, правильный НЕ показываем
+                        reportHtml += `<span class="incorrect">Неверно.</span> Ваш ответ: "${answerDisplayTexts[qName][userAnswerVal]}".`;
+                    } else if (!radios || !radios[0].disabled) { 
+                        reportHtml += `<span class="unanswered">Нет ответа.</span>`;
+                    }
+                    reportHtml += `</li>`;
+                }
+                reportHtml += '</ol>';
+                detailedAnswersDiv.innerHTML = reportHtml;
+
+                // Обновляем состояние формы для следующей попытки
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const qName = 'q' + i;
+                    const radios = form.elements[qName];
+                    if (!radios) continue;
+
+                    if (correctlyAnsweredInSession[qName]) { 
+                        for (const radio of radios) {
+                            radio.disabled = true;
+                            if (radio.value === correctAnswers[qName]) radio.checked = true;
+                        }
+                    } else { // Неверно или не отвечен - сбрасываем выбор, оставляем активным
+                        for (const radio of radios) {
+                            radio.disabled = false;
+                            radio.checked = false;
+                        }
+                    }
+                }
+                submitButton.textContent = `Проверить (попытка ${currentAttemptInCycle + 1})`;
+                submitButton.style.display = 'block';
+                resetButton.style.display = 'block';
+            } else { // Попытки исчерпаны, результат не достигнут
+                scoreDisplay.innerHTML += `<br><strong style="color:red;">К сожалению, вы не набрали достаточно баллов за ${maxAttemptsPerCycle} попытки. Тест будет сброшен.</strong>`;
+                detailedAnswersDiv.innerHTML = "<p>Попробуйте снова с чистого листа!</p>";
+                submitButton.style.display = 'none';
+                resetButton.textContent = "Начать тест заново";
+                resetButton.style.display = 'block';
+                // Автоматический сброс через некоторое время или сразу по кнопке
+                // Для простоты, оставим сброс только по кнопке
+            }
+        }
+    }
+
+    function resetFullQuiz() {
+        correctlyAnsweredInSession = {};
+        currentAttemptInCycle = 0;
+        updateAttemptCounterDisplay();
+        const form = document.getElementById('quizForm');
+        form.reset(); 
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const questionName = 'q' + i;
+            const radioGroup = form.elements[questionName];
+            const feedbackEl = document.getElementById('feedback-' + questionName);
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+            if (radioGroup) {
+                for (const radio of radioGroup) {
+                    radio.disabled = false;
+                }
+            }
+        }
+        document.getElementById('results-container').style.display = 'none';
+        const submitBtn = document.querySelector('.submit-button');
+        submitBtn.textContent = "Проверить результаты";
+        submitBtn.style.display = 'block';
+        document.querySelector('.reset-button').style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // ... (код вставки словариков - такой же, как раньше, просто добавьте ключи textN для новых блоков)
+        // Для краткости я его не повторяю здесь, но он должен быть, чтобы словарики работали.
+        // Пример для первого блока (остальные аналогично)
+         const vocabContents = {
+            block1_q1: `<ul><li>שׁוּק (шук) - рынок</li><li>קִילוֹ (ки́ло) - килограмм</li><li>תַּפּוּחִים (тапухи́м) - яблоки</li><li>עוֹלֶה (оле́) - стоит (м.р.)</li><li>חֲבִילָה (хавила́) - упаковка, пачка</li><li>תּוּתִים (тути́м) - клубника</li></ul>`,
+            block1_q4: `<ul><li>עִפָּרוֹן (ипаро́н) - карандаш (мн.ч. עֶפְרוֹנוֹת - эфроно́т)</li><li>אַרְנָק (арна́к) - кошелек</li></ul>`,
+            // ... и так далее для всех вопросов со словариками ...
+        };
+
+        const questionDivs = document.querySelectorAll('.question');
+        questionDivs.forEach(qDiv => {
+            const hebrewTextEl = qDiv.querySelector('.hebrew-text');
+            if (hebrewTextEl) { // Если в вопросе есть hebrew-text, значит есть и словарик
+                const vocabDetails = qDiv.querySelector('.vocabulary details');
+                // Нужна уникальная привязка словаря к тексту. Можно по id вопроса или по порядку.
+                // Для простоты здесь не реализую, но в реальном проекте словари лучше привязать к конкретному тексту.
+                // Сейчас все <details> будут пустыми. Их нужно заполнить либо вручную в HTML,
+                // либо сделать более сложную логику привязки JS -> HTML.
+            }
+        });
+
+
+        updateAttemptCounterDisplay(); // Инициализация счетчика
+        document.querySelector('.reset-button').style.display = 'none';
+    });
+</script>
+
 </body>
 </html>

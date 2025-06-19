@@ -8,8 +8,7 @@
     {
       "id": "telAvivTrip",
       "title": "Тест 2: Поездка в Тель-Авив",
-      "filePath": "data/tests/test_telaviv.json"
-    }
-    // ... и так далее для каждого нового файла теста
+      "filePath": "data/tests/test_telaviv.json" 
+    } // <--- ЗАПЯТАЯ УБРАНА, так как это последний элемент массива
   ]
 }

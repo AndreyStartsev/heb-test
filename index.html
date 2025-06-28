@@ -48,288 +48,319 @@
     <div id="attempt-counter-display" class="attempt-counter"></div>
 
     <form id="quizForm">
-        <!-- קטע 1: ציוד לבית הספר (שאלות 1-4) -->
+        <!-- קטע 1: תחרות ספורט (שאלות 1-4) -->
         <div class="text-block">
             <div class="hebrew-text">
-                הַמוֹרָה קָנְתָה צִיוּד לְ-30 תַלְמִידִים. הִיא קָנְתָה לְכָל תַלְמִיד מַחְבֶּרֶת בְּ-5 ש"ח וּשְׁנֵי עֶפְרוֹנוֹת. חֲבִילָה שֶׁל 10 עֶפְרוֹנוֹת עוֹלָה 20 ש"ח.
+                בְּמִשְׂחָק כַּדוּרְסַל, קְבוּצַת "הַכּוֹכָבִים" קָלְעָה 80 נְקוּדוֹת בְּסַךְ הַכֹּל. בַּמַחֲצִית הָרִאשׁוֹנָה הִיא קָלְעָה 35 נְקוּדוֹת.
             </div>
             <div class="vocabulary">
                 <details><summary>מילון:</summary><ul>
-                    <li>צִיוּד (цию́д) - оборудование, принадлежности</li>
-                    <li>מַחְבֶּרֶת (махбэ́рэт) - тетрадь</li>
-                    <li>עֵפָרוֹן (ипаро́н) - карандаш (мн.ч. עֶפְרוֹנוֹת - эфроно́т)</li>
-                    <li>חֲבִילָה (хавила́) - упаковка</li>
+                    <li>מִשְׂחָק (мисха́к) - игра</li>
+                    <li>כַּדוּרְסַל (кадурса́ль) - баскетбол</li>
+                    <li>קְבוּצָה (квуца́) - команда</li>
+                    <li>קָלְעָה (каль'а́) - набрала (очки), забила</li>
+                    <li>נְקוּדוֹת (нэкудо́т) - очки</li>
+                    <li>מַחֲצִית (махаци́т) - половина (игры)</li>
                 </ul></details>
             </div>
             <div class="question">
-                <p>1. כַּמָה שִׁילְמָה הַמוֹרָה עַל כָּל הַמַחְבְּרוֹת?</p>
+                <p>1. כַּמָה נְקוּדוֹת קָלְעָה הַקְבוּצָה בַּמַחֲצִית הַשְׁנִיָה?</p>
                 <div class="options">
-                    <label><input type="radio" name="q1" value="A"><span> א) 100 ש"ח</span></label>
-                    <label><input type="radio" name="q1" value="B"><span> ב) 120 ש"ח</span></label>
-                    <label><input type="radio" name="q1" value="C"><span> ג) 150 ש"ח</span></label>
-                    <label><input type="radio" name="q1" value="D"><span> ד) 180 ש"ח</span></label>
+                    <label><input type="radio" name="q1" value="A"><span> א) 35 נקודות</span></label>
+                    <label><input type="radio" name="q1" value="B"><span> ב) 40 נקודות</span></label>
+                    <label><input type="radio" name="q1" value="C"><span> ג) 45 נקודות</span></label>
+                    <label><input type="radio" name="q1" value="D"><span> ד) 50 נקודות</span></label>
                 </div><div class="feedback" id="feedback-q1"></div>
             </div>
             <div class="question">
-                <p>2. כַּמָה עֶפְרוֹנוֹת הָיְתָה צְרִיכָה הַמוֹרָה לִקְנוֹת בְּסַךְ הַכֹּל?</p>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="A"><span> א) 30 עפרונות</span></label>
-                    <label><input type="radio" name="q2" value="B"><span> ב) 50 עפרונות</span></label>
-                    <label><input type="radio" name="q2" value="C"><span> ג) 60 עפרונות</span></label>
-                    <label><input type="radio" name="q2" value="D"><span> ד) 90 עפרונות</span></label>
-                </div><div class="feedback" id="feedback-q2"></div>
-            </div>
-            <div class="question">
-                <p>3. כַּמָה שִׁילְמָה הַמוֹרָה עַל כָּל הָעֶפְרוֹנוֹת?</p>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="A"><span> א) 60 ש"ח</span></label>
-                    <label><input type="radio" name="q3" value="B"><span> ב) 100 ש"ח</span></label>
-                    <label><input type="radio" name="q3" value="C"><span> ג) 120 ש"ח</span></label>
-                    <label><input type="radio" name="q3" value="D"><span> ד) 150 ש"ח</span></label>
-                </div><div class="feedback" id="feedback-q3"></div>
-            </div>
-            <div class="question">
-                <p>4. 1/3 מֵהַתַלְמִידִים בַּכִּיתָה שְׂמָאלִיִים. כַּמָה תַלְמִידִים שְׂמָאלִיִים יֵשׁ בַּכִּיתָה?</p>
+                <div class="hebrew-text">הַשַׂחְקָן הַמִצְטַיֵן, אֵיתָן, קָלַע 1/4 מִסַךְ הַנְקוּדוֹת שֶׁל הַקְבוּצָה. הוּא זָרַק 10 פְּעָמִים לַסַל.</div>
                  <div class="vocabulary">
                     <details><summary>מילון:</summary><ul>
-                        <li>שְׂמָאלִיִים (смали́им) - левши</li>
+                        <li>שַׂחְקָן (сахка́н) - игрок</li>
+                        <li>מִצְטַיֵן (мицтае́н) - выдающийся, лучший</li>
+                        <li>זָרַק (зара́к) - бросил</li>
+                        <li>סַל (саль) - корзина</li>
+                    </ul></details>
+                </div>
+                <p>2. כַּמָה נְקוּדוֹת קָלַע אֵיתָן?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="A"><span> א) 15 נקודות</span></label>
+                    <label><input type="radio" name="q2" value="B"><span> ב) 20 נקודות</span></label>
+                    <label><input type="radio" name="q2" value="C"><span> ג) 25 נקודות</span></label>
+                    <label><input type="radio" name="q2" value="D"><span> ד) 30 נקודות</span></label>
+                </div><div class="feedback" id="feedback-q2"></div>
+            </div>
+             <div class="question">
+                <p>3. מָהוּ אֲחוּז הַהַצְלָחָה שֶׁל אֵיתָן בִּזְרִיקוֹת לַסַל, אִם כָּל קְלִיעָה שָׁוָוה 2 נְקוּדוֹת?</p>
+                 <div class="vocabulary">
+                    <details><summary>מילון:</summary><ul>
+                        <li>אֲחוּז הַצְלָחָה (аху́з hацлаха́) - процент успеха</li>
+                        <li>קְלִיעָה (кли'а́) - попадание</li>
                     </ul></details>
                 </div>
                 <div class="options">
-                    <label><input type="radio" name="q4" value="A"><span> א) 5 תלמידים</span></label>
-                    <label><input type="radio" name="q4" value="B"><span> ב) 10 תלמידים</span></label>
-                    <label><input type="radio" name="q4" value="C"><span> ג) 12 תלמידים</span></label>
-                    <label><input type="radio" name="q4" value="D"><span> ד) 15 תלמידים</span></label>
+                    <label><input type="radio" name="q3" value="A"><span> א) 50%</span></label>
+                    <label><input type="radio" name="q3" value="B"><span> ב) 80%</span></label>
+                    <label><input type="radio" name="q3" value="C"><span> ג) 90%</span></label>
+                    <label><input type="radio" name="q3" value="D"><span> ד) 100%</span></label>
+                </div><div class="feedback" id="feedback-q3"></div>
+            </div>
+             <div class="question">
+                <p>4. בְּמִשְׂחָק אַחֵר, "הַכּוֹכָבִים" קָלְעוּ 90 נְקוּדוֹת. הַקְבוּצָה הַיְרִיבָה קָלְעָה 2/3 מֵהַנְקוּדוֹת שֶׁלָהֶם. בְּכַמָה נְקוּדוֹת נִיצְחוּ "הַכּוֹכָבִים"?</p>
+                 <div class="vocabulary">
+                    <details><summary>מילון:</summary><ul>
+                        <li>יְרִיבָה (ерива́) - соперник (ж.р. - קבוצה)</li>
+                        <li>נִיצְחוּ (ницху́) - победили</li>
+                    </ul></details>
+                </div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="A"><span> א) 20 נקודות</span></label>
+                    <label><input type="radio" name="q4" value="B"><span> ב) 30 נקודות</span></label>
+                    <label><input type="radio" name="q4" value="C"><span> ג) 45 נקודות</span></label>
+                    <label><input type="radio" name="q4" value="D"><span> ד) 60 נקודות</span></label>
                 </div><div class="feedback" id="feedback-q4"></div>
             </div>
         </div>
 
-        <!-- קטע 2: טיול אופניים (שאלות 5-8) -->
+        <!-- קטע 2: משכורת ותקציב (שאלות 5-8) -->
         <div class="text-block">
             <div class="hebrew-text">
-                תָּמָר רָכְבָה עַל אוֹפַנַיִם מַסְלוּל שֶׁל 24 ק"מ. 1/3 מֵהַדֶרֶךְ הָיְתָה עֲלִיָה, וְהַשְׁאָר דֶרֶךְ מִישׁוֹרִית. מְהִירוּתָהּ בָּעֲלִיָה הָיְתָה 8 קמ"ש, וּבַמִישׁוֹר 16 קמ"ש.
+                הַמַשְׂכּוֹרֶת הַחוֹדְשִׁית שֶׁל אָרִיֵה הִיא 8,000 ש"ח. הוּא חוֹסֵךְ 15% מֵהַמַשְׂכּוֹרֶת כָּל חֹדֶשׁ.
             </div>
             <div class="vocabulary">
                 <details><summary>מילון:</summary><ul>
-                    <li>רָכְבָה (рахва́) - ехала (на велосипеде)</li>
-                    <li>מַסְלוּל (маслу́ль) - маршрут, трасса</li>
-                    <li>עֲלִיָה (алия́) - подъем</li>
-                    <li>שְׁאָר (ш'ар) - остаток</li>
-                    <li>דֶרֶךְ מִישׁוֹרִית (дэ́рэх мишори́т) - равнинная дорога, плоская местность</li>
-                    <li>מְהִירוּת (мэhиру́т) - скорость</li>
-                    <li>קמ"ש (кама́ш) - км/ч</li>
+                    <li>מַשְׂכּוֹרֶת (маско́рэт) - зарплата</li>
+                    <li>חוֹדְשִׁית (ходши́т) - месячная</li>
+                    <li>חוֹסֵךְ (хосэ́х) - копит, экономит</li>
                 </ul></details>
             </div>
             <div class="question">
-                <p>5. כַּמָה קִילוֹמֶטְרִים הָיְתָה הָעֲלִיָה?</p>
+                <p>5. כַּמָה כֶּסֶף חוֹסֵךְ אָרִיֵה בְּחֹדֶשׁ?</p>
                 <div class="options">
-                    <label><input type="radio" name="q5" value="A"><span> א) 6 ק"מ</span></label>
-                    <label><input type="radio" name="q5" value="B"><span> ב) 8 ק"מ</span></label>
-                    <label><input type="radio" name="q5" value="C"><span> ג) 10 ק"מ</span></label>
-                    <label><input type="radio" name="q5" value="D"><span> ד) 12 ק"מ</span></label>
+                    <label><input type="radio" name="q5" value="A"><span> א) 800 ש"ח</span></label>
+                    <label><input type="radio" name="q5" value="B"><span> ב) 1,000 ש"ח</span></label>
+                    <label><input type="radio" name="q5" value="C"><span> ג) 1,200 ש"ח</span></label>
+                    <label><input type="radio" name="q5" value="D"><span> ד) 1,500 ש"ח</span></label>
                 </div><div class="feedback" id="feedback-q5"></div>
             </div>
             <div class="question">
-                <p>6. כַּמָה קִילוֹמֶטְרִים הָיְתָה הַדֶרֶךְ הַמִישׁוֹרִית?</p>
+                <p>6. כַּמָה כֶּסֶף נִשְׁאָר לוֹ לְהוֹצָאוֹת אַחֲרֵי הַחִסָכוֹן?</p>
+                 <div class="vocabulary">
+                    <details><summary>מילון:</summary><ul>
+                        <li>הוֹצָאוֹת (hоцао́т) - расходы</li>
+                        <li>חִסָכוֹן (хисахо́н) - сбережения</li>
+                    </ul></details>
+                </div>
                 <div class="options">
-                    <label><input type="radio" name="q6" value="A"><span> א) 8 ק"מ</span></label>
-                    <label><input type="radio" name="q6" value="B"><span> ב) 12 ק"מ</span></label>
-                    <label><input type="radio" name="q6" value="C"><span> ג) 16 ק"מ</span></label>
-                    <label><input type="radio" name="q6" value="D"><span> ד) 18 ק"מ</span></label>
+                    <label><input type="radio" name="q6" value="A"><span> א) 6,500 ש"ח</span></label>
+                    <label><input type="radio" name="q6" value="B"><span> ב) 6,800 ש"ח</span></label>
+                    <label><input type="radio" name="q6" value="C"><span> ג) 7,000 ש"ח</span></label>
+                    <label><input type="radio" name="q6" value="D"><span> ד) 7,200 ש"ח</span></label>
                 </div><div class="feedback" id="feedback-q6"></div>
             </div>
             <div class="question">
-                <p>7. כַּמָה זְמַן לָקַח לְתָמָר לַעֲשׂוֹת אֶת כָּל הַמַסְלוּל?</p>
+                <div class="hebrew-text">מֵהַכֶּסֶף שֶׁנִשְׁאָר, הוּא מוֹצִיא 1/2 עַל שְׂכַר דִירָה, ו-1/4 עַל מָזוֹן.</div>
+                 <div class="vocabulary">
+                    <details><summary>מילון:</summary><ul>
+                        <li>מוֹצִיא (моци́) - тратит</li>
+                        <li>שְׂכַר דִירָה (схар дира́) - аренда квартиры</li>
+                        <li>מָזוֹן (мазо́н) - еда, пропитание</li>
+                    </ul></details>
+                </div>
+                <p>7. כַּמָה כֶּסֶף הוּא מוֹצִיא עַל שְׂכַר דִירָה וּמָזוֹן יַחַד?</p>
                 <div class="options">
-                    <label><input type="radio" name="q7" value="A"><span> א) שעה וחצי</span></label>
-                    <label><input type="radio" name="q7" value="B"><span> ב) שעתיים</span></label>
-                    <label><input type="radio" name="q7" value="C"><span> ג) שעתיים וחצי</span></label>
-                    <label><input type="radio" name="q7" value="D"><span> ד) 3 שעות</span></label>
+                    <label><input type="radio" name="q7" value="A"><span> א) 3,400 ש"ח</span></label>
+                    <label><input type="radio" name="q7" value="B"><span> ב) 4,800 ש"ח</span></label>
+                    <label><input type="radio" name="q7" value="C"><span> ג) 5,100 ש"ח</span></label>
+                    <label><input type="radio" name="q7" value="D"><span> ד) 6,000 ש"ח</span></label>
                 </div><div class="feedback" id="feedback-q7"></div>
             </div>
              <div class="question">
-                <p>8. אִם תָמָר יָצְאָה לַדֶרֶךְ ב-09:45, מָתַי הִיא סִייְמָה אֶת הַמַסְלוּל?</p>
+                <p>8. כַּמָה כֶּסֶף נִשְׁאָר לוֹ בְּסוֹף הַחֹדֶשׁ אַחֲרֵי כָּל הַהוֹצָאוֹת הָאֵלוּ?</p>
                 <div class="options">
-                    <label><input type="radio" name="q8" value="A"><span> א) 11:15</span></label>
-                    <label><input type="radio" name="q8" value="B"><span> ב) 11:30</span></label>
-                    <label><input type="radio" name="q8" value="C"><span> ג) 11:45</span></label>
-                    <label><input type="radio" name="q8" value="D"><span> ד) 12:00</span></label>
+                    <label><input type="radio" name="q8" value="A"><span> א) 1,200 ש"ח</span></label>
+                    <label><input type="radio" name="q8" value="B"><span> ב) 1,500 ש"ח</span></label>
+                    <label><input type="radio" name="q8" value="C"><span> ג) 1,700 ש"ח</span></label>
+                    <label><input type="radio" name="q8" value="D"><span> ד) 2,000 ש"ח</span></label>
                 </div><div class="feedback" id="feedback-q8"></div>
             </div>
         </div>
         
-        <!-- קטע 3: עבודה וכסף (שאלות 9-12) -->
+        <!-- קטע 3: קריאת ספר (שאלות 9-12) -->
         <div class="text-block">
             <div class="hebrew-text">
-                דָנָה עָבְדָה בַּחֲנוּת. בְּיוֹם חֲמִישִׁי הִיא עָבְדָה 4 שָׁעוֹת וְהִרְוִיחָה 30 ש"ח לְשָׁעָה. בְּיוֹם שִׁישִׁי הִיא עָבְדָה 5 שָׁעוֹת וְהִרְוִיחָה 40 ש"ח לְשָׁעָה.
+                בְּסֵפֶר יֵשׁ 240 עַמוּדִים. לִיאָת קוֹרֵאת בְּקֶצֶב קָבוּעַ שֶׁל 15 עַמוּדִים לְיוֹם.
             </div>
-            <div class="vocabulary">
+             <div class="vocabulary">
                 <details><summary>מילון:</summary><ul>
-                    <li>עָבְדָה (авда́) - работала</li>
-                    <li>הִרְוִיחָה (hирви́ха) - заработала</li>
-                    <li>לְשָׁעָה (лэ-ша'а́) - в час</li>
+                    <li>עַמוּדִים (амуди́м) - страницы</li>
+                    <li>קוֹרֵאת (корэ́т) - читает (ж.р.)</li>
+                    <li>קֶצֶב (кэ́цэв) - темп</li>
+                    <li>קָבוּעַ (каву́а) - постоянный</li>
                 </ul></details>
             </div>
             <div class="question">
-                <p>9. כַּמָה כֶּסֶף הִרְוִיחָה דָנָה בְּסַךְ הַכֹּל בִּשְׁנֵי הַיָמִים?</p>
+                <p>9. תּוֹךְ כַּמָה יָמִים תְסַיֵם לִיאָת לִקְרוֹא אֶת כָּל הַסֵפֶר?</p>
                 <div class="options">
-                    <label><input type="radio" name="q9" value="A"><span> א) 200 ש"ח</span></label>
-                    <label><input type="radio" name="q9" value="B"><span> ב) 280 ש"ח</span></label>
-                    <label><input type="radio" name="q9" value="C"><span> ג) 300 ש"ח</span></label>
-                    <label><input type="radio" name="q9" value="D"><span> ד) 320 ש"ח</span></label>
+                    <label><input type="radio" name="q9" value="A"><span> א) 12 ימים</span></label>
+                    <label><input type="radio" name="q9" value="B"><span> ב) 14 ימים</span></label>
+                    <label><input type="radio" name="q9" value="C"><span> ג) 15 ימים</span></label>
+                    <label><input type="radio" name="q9" value="D"><span> ד) 16 ימים</span></label>
                 </div><div class="feedback" id="feedback-q9"></div>
             </div>
             <div class="question">
-                <p>10. דָנָה בִּזְבְּזָה 1/4 מֵהַכֶּסֶף שֶׁהִרְוִיחָה עַל מַתָנָה. כַּמָה עָלְתָה הַמַתָנָה?</p>
-                <div class="vocabulary">
+                <p>10. כַּמָה עַמוּדִים יִוָתְרוּ לָה לִקְרוֹא אַחֲרֵי שָׁבוּעַ שֶׁל קְרִיאָה?</p>
+                 <div class="vocabulary">
                     <details><summary>מילון:</summary><ul>
-                        <li>בִּזְבְּזָה (бизбэза́) - потратила</li>
-                        <li>מַתָנָה (матана́) - подарок</li>
+                        <li>יִוָתְרוּ (йиватру́) - останутся</li>
                     </ul></details>
                 </div>
                 <div class="options">
-                    <label><input type="radio" name="q10" value="A"><span> א) 60 ש"ח</span></label>
-                    <label><input type="radio" name="q10" value="B"><span> ב) 70 ש"ח</span></label>
-                    <label><input type="radio" name="q10" value="C"><span> ג) 80 ש"ח</span></label>
-                    <label><input type="radio" name="q10" value="D"><span> ד) 90 ש"ח</span></label>
+                    <label><input type="radio" name="q10" value="A"><span> א) 105 עמודים</span></label>
+                    <label><input type="radio" name="q10" value="B"><span> ב) 120 עמודים</span></label>
+                    <label><input type="radio" name="q10" value="C"><span> ג) 135 עמודים</span></label>
+                    <label><input type="radio" name="q10" value="D"><span> ד) 150 עמודים</span></label>
                 </div><div class="feedback" id="feedback-q10"></div>
             </div>
              <div class="question">
-                <p>11. מֵהַכֶּסֶף שֶׁנִשְׁאַר, הִיא בִּזְבְּזָה 20% עַל אֲרוּחָה. כַּמָה עָלְתָה הָאֲרוּחָה?</p>
+                <div class="hebrew-text">
+                   בַּיוֹם הַשְׁמִינִי, לִיאָת הֶחְלִיטָה לִקְרוֹא 50% יוֹתֵר עַמוּדִים מֵהָרָגִיל.
+                </div>
                  <div class="vocabulary">
                     <details><summary>מילון:</summary><ul>
-                        <li>אֲרוּחָה (аруха́) - еда, трапеза</li>
+                        <li>הֶחְלִיטָה (hэхли́та) - решила</li>
+                        <li>מֵהָרָגִיל (мэ-hараги́ль) - чем обычно</li>
                     </ul></details>
                 </div>
+                <p>11. כַּמָה עַמוּדִים הִיא קָרְאָה בַּיוֹם הַשְׁמִינִי?</p>
                 <div class="options">
-                    <label><input type="radio" name="q11" value="A"><span> א) 40 ש"ח</span></label>
-                    <label><input type="radio" name="q11" value="B"><span> ב) 48 ש"ח</span></label>
-                    <label><input type="radio" name="q11" value="C"><span> ג) 64 ש"ח</span></label>
-                    <label><input type="radio" name="q11" value="D"><span> ד) 80 ש"ח</span></label>
+                    <label><input type="radio" name="q11" value="A"><span> א) 15 עמודים</span></label>
+                    <label><input type="radio" name="q11" value="B"><span> ב) 20.5 עמודים</span></label>
+                    <label><input type="radio" name="q11" value="C"><span> ג) 22.5 עמודים</span></label>
+                    <label><input type="radio" name="q11" value="D"><span> ד) 30 עמודים</span></label>
                 </div><div class="feedback" id="feedback-q11"></div>
             </div>
              <div class="question">
-                <p>12. כַּמָה כֶּסֶף נִשְׁאַר לְדָנָה בַּסוֹף?</p>
+                <p>12. אֵיזֶה חֵלֶק מֵהַסֵפֶר קָרְאָה לִיאָת לְאַחַר 8 יָמִים (כּוֹלֵל הַיוֹם הַשְׁמִינִי)?</p>
                 <div class="options">
-                    <label><input type="radio" name="q12" value="A"><span> א) 192 ש"ח</span></label>
-                    <label><input type="radio" name="q12" value="B"><span> ב) 200 ש"ח</span></label>
-                    <label><input type="radio" name="q12" value="C"><span> ג) 240 ש"ח</span></label>
-                    <label><input type="radio" name="q12" value="D"><span> ד) 180 ש"ח</span></label>
+                    <label><input type="radio" name="q12" value="A"><span> א) 1/3 מהספר</span></label>
+                    <label><input type="radio" name="q12" value="B"><span> ב) 1/2 מהספר</span></label>
+                    <label><input type="radio" name="q12" value="C"><span> ג) 2/3 מהספר</span></label>
+                    <label><input type="radio" name="q12" value="D"><span> ד) יותר מחצי הספר</span></label>
                 </div><div class="feedback" id="feedback-q12"></div>
             </div>
         </div>
 
-        <!-- קטע 4: תרגילי חשבון כלליים (שאלות 13-16) -->
+        <!-- קטע 4: גינה וצמחים (שאלות 13-16) -->
         <div class="text-block">
-             <div class="question">
-                <p>13. מַהִי הַתוֹצָאָה שֶׁל הַתַרְגִיל: 1/2 + 2/5 = ?</p>
-                <div class="options">
-                    <label><input type="radio" name="q13" value="A"><span> א) 3/7</span></label>
-                    <label><input type="radio" name="q13" value="B"><span> ב) 7/10</span></label>
-                    <label><input type="radio" name="q13" value="C"><span> ג) 9/10</span></label>
-                    <label><input type="radio" name="q13" value="D"><span> ד) 3/10</span></label>
-                </div><div class="feedback" id="feedback-q13"></div>
+            <div class="hebrew-text">
+                גִינָה רִיבּוּעִית הִיא בְּאֹרֶךְ 8 מֶטֶר לְכָל צֶלַע. רוֹצִים לִשְׁתוֹל בָּהּ פְּרָחִים.
+            </div>
+            <div class="vocabulary">
+                <details><summary>מילון:</summary><ul>
+                    <li>רִיבּוּעִית (рибу'и́т) - квадратная</li>
+                    <li>צֶלַע (цэ́ла) - сторона</li>
+                    <li>לִשְׁתוֹל (лишто́ль) - сажать (растения)</li>
+                    <li>פְּרָחִים (прахи́м) - цветы</li>
+                </ul></details>
             </div>
             <div class="question">
-                 <div class="hebrew-text">
-                    בְּקֻפְסָה 15 כַּדוּרִים. 1/3 מֵהֶם אֲדוּמִים. יֵשׁ 2 כַּדוּרִים כְּחוּלִים יוֹתֵר מֵאֲדוּמִים. שְׁאָר הַכַּדוּרִים יְרוּקִים.
-                </div>
+                <p>13. מַהוּ שֶׁטַח הַגִינָה?</p>
                  <div class="vocabulary">
                     <details><summary>מילון:</summary><ul>
-                        <li>כַּדוּרִים (кадури́м) - шарики</li>
-                        <li>אֲדוּמִים (адуми́м) - красные</li>
-                        <li>כְּחוּלִים (кхули́м) - синие</li>
-                        <li>יוֹתֵר (йотэ́р) - больше</li>
-                        <li>יְרוּקִים (йеруки́м) - зеленые</li>
+                        <li>שֶׁטַח (шэ́тах) - площадь</li>
                     </ul></details>
                 </div>
-                <p>14. כַּמָה כַּדוּרִים יְרוּקִים יֵשׁ בַּקֻפְסָה?</p>
                 <div class="options">
-                    <label><input type="radio" name="q14" value="A"><span> א) 2</span></label>
-                    <label><input type="radio" name="q14" value="B"><span> ב) 3</span></label>
-                    <label><input type="radio" name="q14" value="C"><span> ג) 5</span></label>
-                    <label><input type="radio" name="q14" value="D"><span> ד) 7</span></label>
+                    <label><input type="radio" name="q13" value="A"><span> א) 16 מ"ר</span></label>
+                    <label><input type="radio" name="q13" value="B"><span> ב) 32 מ"ר</span></label>
+                    <label><input type="radio" name="q13" value="C"><span> ג) 48 מ"ר</span></label>
+                    <label><input type="radio" name="q13" value="D"><span> ד) 64 מ"ר</span></label>
+                </div><div class="feedback" id="feedback-q13"></div>
+            </div>
+             <div class="question">
+                <p>14. שׁוֹתְלִים וְרָדִים עַל 1/4 מֵהַשֶׁטַח. עַל כַּמָה מֶטְרִים רְבוּעִים שׁוֹתְלִים וְרָדִים?</p>
+                 <div class="vocabulary">
+                    <details><summary>מילון:</summary><ul>
+                        <li>וְרָדִים (вради́м) - розы</li>
+                        <li>מֶטֶר רָבוּעַ (мэ́тэр раву́а) - квадратный метр (מ"ר)</li>
+                    </ul></details>
+                </div>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="A"><span> א) 8 מ"ר</span></label>
+                    <label><input type="radio" name="q14" value="B"><span> ב) 12 מ"ר</span></label>
+                    <label><input type="radio" name="q14" value="C"><span> ג) 16 מ"ר</span></label>
+                    <label><input type="radio" name="q14" value="D"><span> ד) 32 מ"ר</span></label>
                 </div><div class="feedback" id="feedback-q14"></div>
             </div>
              <div class="question">
-                <p>15. מְחִיר חֻלְצָה הוּא 150 ש"ח. בַּחֲנוּת יֵשׁ הֲנָחָה שֶׁל 30%. מָהוּ הַמְחִיר לְאַחַр הַהֲנָחָה?</p>
+                <p>15. בַּשֶׁטַח שֶׁנִשְׁאַר, שׁוֹתְלִים צִבְעוֹנִים. כָּל צִבְעוֹנִי זָקוּק לְ-0.5 מֶטֶר רָבוּעַ. כַּמָה צִבְעוֹנִים אֶפְשָׁר לִשְׁתוֹל?</p>
                  <div class="vocabulary">
                     <details><summary>מילון:</summary><ul>
-                        <li>חֻלְצָה (хульца́) - рубашка, футболка</li>
+                        <li>צִבְעוֹנִים (цив'они́м) - тюльпаны</li>
+                        <li>זָקוּק (заку́к) - нуждается</li>
                     </ul></details>
                 </div>
                 <div class="options">
-                    <label><input type="radio" name="q15" value="A"><span> א) 100 ש"ח</span></label>
-                    <label><input type="radio" name="q15" value="B"><span> ב) 105 ש"ח</span></label>
-                    <label><input type="radio" name="q15" value="C"><span> ג) 110 ש"ח</span></label>
-                    <label><input type="radio" name="q15" value="D"><span> ד) 120 ש"ח</span></label>
+                    <label><input type="radio" name="q15" value="A"><span> א) 48 צבעונים</span></label>
+                    <label><input type="radio" name="q15" value="B"><span> ב) 64 צבעונים</span></label>
+                    <label><input type="radio" name="q15" value="C"><span> ג) 96 צבעונים</span></label>
+                    <label><input type="radio" name="q15" value="D"><span> ד) 128 צבעונים</span></label>
                 </div><div class="feedback" id="feedback-q15"></div>
             </div>
-            <div class="question">
-                <p>16. אֵיזֶה שֶׁבֶר הוּא הַקָטָן בְּיוֹתֵר: 1/2, 2/5, 3/8 ?</p>
-                 <div class="vocabulary">
-                    <details><summary>מילון:</summary><ul>
-                        <li>שֶׁבֶר (шэ́вер) - дробь</li>
-                        <li>קָטָן בְּיוֹתֵר (ката́н бэ-йотэ́р) - самый маленький</li>
-                    </ul></details>
-                </div>
+             <div class="question">
+                <p>16. אִם כָּל 10 דַקוֹת שׁוֹתְלִים 8 צִבְעוֹנִים, כַּמָה זְמַן תִיקַח שְׁתִילַת כָּל הַצִבְעוֹנִים?</p>
                 <div class="options">
-                    <label><input type="radio" name="q16" value="A"><span> א) 1/2</span></label>
-                    <label><input type="radio" name="q16" value="B"><span> ב) 2/5</span></label>
-                    <label><input type="radio" name="q16" value="C"><span> ג) 3/8</span></label>
-                    <label><input type="radio" name="q16" value="D"><span> ד) כולם שווים</span></label>
+                    <label><input type="radio" name="q16" value="A"><span> א) שעה אחת</span></label>
+                    <label><input type="radio" name="q16" value="B"><span> ב) שעה וחצי</span></label>
+                    <label><input type="radio" name="q16" value="C"><span> ג) שעתיים</span></label>
+                    <label><input type="radio" name="q16" value="D"><span> ד) שעתיים וחצי</span></label>
                 </div><div class="feedback" id="feedback-q16"></div>
             </div>
         </div>
 
-        <!-- קטע 5: סדרות וחידות (שאלות 17-20) -->
+        <!-- קטע 5: תרגילי חשבון כלליים (שאלות 17-20) -->
         <div class="text-block">
             <div class="question">
-                <p>17. מָהוּ הַמִסְפָּר הַבָּא בַּסִדְרָה: 1, 4, 9, 16, 25, ___ ?</p>
-                <div class="vocabulary">
-                    <details><summary>מילון:</summary><ul>
-                        <li>סִדְרָה (сидра́) - последовательность, ряд</li>
-                    </ul></details>
-                </div>
+                <p>17. מָה הַתוֹצָאָה שֶׁל הַתַרְגִיל: 100 / (20 + 5) × 3 = ?</p>
                 <div class="options">
-                    <label><input type="radio" name="q17" value="A"><span> א) 30</span></label>
-                    <label><input type="radio" name="q17" value="B"><span> ב) 32</span></label>
-                    <label><input type="radio" name="q17" value="C"><span> ג) 36</span></label>
-                    <label><input type="radio" name="q17" value="D"><span> ד) 49</span></label>
+                    <label><input type="radio" name="q17" value="A"><span> א) 1</span></label>
+                    <label><input type="radio" name="q17" value="B"><span> ב) 12</span></label>
+                    <label><input type="radio" name="q17" value="C"><span> ג) 15</span></label>
+                    <label><input type="radio" name="q17" value="D"><span> ד) 18</span></label>
                 </div><div class="feedback" id="feedback-q17"></div>
             </div>
-             <div class="question">
-                <p>18. בְּקָלְמַר יֵשׁ 12 עֶפְרוֹנוֹת צִבְעוֹנִיִים. 1/4 מֵהֶם צְהוּבִּים. 1/3 מֵהֶם כְּחוּלִים. כָּל הַשְׁאָר אֲדוּמִים. כַּמָה עֶפְרוֹנוֹת אֲדוּמִים יֵשׁ בַּקָלְמַר?</p>
-                 <div class="vocabulary">
-                    <details><summary>מילון:</summary><ul>
-                        <li>קָלְמַר (кальма́р) - пенал</li>
-                        <li>צִבְעוֹנִיִים (цив'онии́м) - цветные</li>
-                        <li>צְהוּבִּים (цээуби́м) - желтые</li>
-                    </ul></details>
-                </div>
+            <div class="question">
+                <p>18. מִי גָדוֹל יוֹתֵר: 2/3 אוֹ 60% ?</p>
                 <div class="options">
-                    <label><input type="radio" name="q18" value="A"><span> א) 3</span></label>
-                    <label><input type="radio" name="q18" value="B"><span> ב) 4</span></label>
-                    <label><input type="radio" name="q18" value="C"><span> ג) 5</span></label>
-                    <label><input type="radio" name="q18" value="D"><span> ד) 6</span></label>
+                    <label><input type="radio" name="q18" value="A"><span> א) 2/3</span></label>
+                    <label><input type="radio" name="q18" value="B"><span> ב) 60%</span></label>
+                    <label><input type="radio" name="q18" value="C"><span> ג) הם שווים</span></label>
+                    <label><input type="radio" name="q18" value="D"><span> ד) אי אפשר לדעת</span></label>
                 </div><div class="feedback" id="feedback-q18"></div>
             </div>
             <div class="question">
-                <p>19. אִם לְפְנֵי 5 שָׁנִים גִילוֹ שֶׁל דָן הָיָה 7, בֶּן כַּמָה יִהְיֶה דָן בְּעוֹד 3 שָׁנִים?</p>
+                <p>19. סְכוּם שְׁנֵי מִסְפָּרִים הוּא 30. הַהֶפְרֵשׁ בֵּינֵיהֶם הוּא 6. מָהוּ הַמִסְפָּר הַגָדוֹל?</p>
+                 <div class="vocabulary">
+                    <details><summary>מילון:</summary><ul>
+                        <li>סְכוּם (схум) - сумма</li>
+                        <li>הֶפְרֵשׁ (hэфрэ́ш) - разница</li>
+                    </ul></details>
+                </div>
                 <div class="options">
-                    <label><input type="radio" name="q19" value="A"><span> א) 10</span></label>
-                    <label><input type="radio" name="q19" value="B"><span> ב) 12</span></label>
-                    <label><input type="radio" name="q19" value="C"><span> ג) 15</span></label>
-                    <label><input type="radio" name="q19" value="D"><span> ד) 18</span></label>
+                    <label><input type="radio" name="q19" value="A"><span> א) 12</span></label>
+                    <label><input type="radio" name="q19" value="B"><span> ב) 15</span></label>
+                    <label><input type="radio" name="q19" value="C"><span> ג) 18</span></label>
+                    <label><input type="radio" name="q19" value="D"><span> ד) 24</span></label>
                 </div><div class="feedback" id="feedback-q19"></div>
             </div>
-             <div class="question">
-                <p>20. מָה הַתוֹצָאָה שֶׁל הַתַרְגִיל: 100 ÷ (4 × 5) + 15 = ?</p>
+            <div class="question">
+                <p>20. מָהוּ הַמִסְפָּר הַבָּא בַּסִדְרָה: 1, 2, 4, 8, 16, ___ ?</p>
                 <div class="options">
-                    <label><input type="radio" name="q20" value="A"><span> א) 15</span></label>
-                    <label><input type="radio" name="q20" value="B"><span> ב) 20</span></label>
-                    <label><input type="radio" name="q20" value="C"><span> ג) 25</span></label>
-                    <label><input type="radio" name="q20" value="D"><span> ד) 40</span></label>
+                    <label><input type="radio" name="q20" value="A"><span> א) 24</span></label>
+                    <label><input type="radio" name="q20" value="B"><span> ב) 30</span></label>
+                    <label><input type="radio" name="q20" value="C"><span> ג) 32</span></label>
+                    <label><input type="radio" name="q20" value="D"><span> ד) 36</span></label>
                 </div><div class="feedback" id="feedback-q20"></div>
             </div>
         </div>
@@ -349,38 +380,40 @@
 
 <script>
     const correctAnswers = {
-        q1: 'D', q2: 'C', q3: 'B', q4: 'B', 
-        q5: 'B', q6: 'C', q7: 'B', q8: 'C',
-        q9: 'D', q10: 'C', q11: 'B', q12: 'C',
-        q13: 'C', q14: 'B', q15: 'B', q16: 'C',
-        q17: 'C', q18: 'C', q19: 'C', q20: 'B'
+        q1: 'C', q2: 'B', q3: 'D', q4: 'B', 
+        q5: 'C', q6: 'B', q7: 'C', q8: 'C',
+        q9: 'D', q10: 'C', q11: 'C', q12: 'D',
+        q13: 'D', q14: 'C', q15: 'C', q16: 'C',
+        q17: 'B', q18: 'A', q19: 'C', q20: 'C'
     };
 
     const answerDisplayTexts = {
-        q1: {A: "א) 40 ש\"ח", B: "ב) 30 ש\"ח", C: "ג) 25 ש\"ח", D: "ד) 20 ש\"ח", explanation: "(הנחה של 50% מ-40 היא 20. 40 - 20 = 20 ש\"ח)"},
-        q2: {A: "א) 100 ש\"ח", B: "ב) 120 ש\"ח", C: "ג) 140 ש\"ח", D: "ד) 150 ש\"ח", explanation: "(2 מבוגרים * 40 ש\"ח) + (3 ילדים * 20 ש\"ח) = 80 + 60 = 140 ש\"ח"},
-        q3: {A: "א) 11:20", B: "ב) 11:30", C: "ג) 11:40", D: "ד) 12:00", explanation: "(10:10 + שעה = 11:10. 11:10 + 20 דקות = 11:30)"},
-        q4: {A: "א) 10", B: "ב) 20", C: "ג) 30", D: "ד) 40", explanation: "(2/3 מ-60 מושבים הם 40 מושבים תפוסים. נשארו 60-40=20)"},
-        q5: {A: "א) 250 גרם", B: "ב) 500 גרם", C: "ג) 750 גרם", D: "ד) 1000 גרם", explanation: "(שם השאלה השתנה. התשובה לשאלה החדשה היא ב) 8 ק\"מ, שזה 1/3 מ-24 ק\"מ)"}, // Question text was changed, need to update JS text to match
-        q6: {A: "א) 8 ק\"מ", B: "ב) 12 ק\"מ", C: "ג) 16 ק\"מ", D: "ד) 18 ק\"מ", explanation: "(24 ק\"מ סה\"כ - 8 ק\"מ עלייה = 16 ק\"מ מישור)"},
-        q7: {A: "א) שעה וחצי", B: "ב) שעתיים", C: "ג) שעתיים וחצי", D: "ד) 3 שעות", explanation: "(עלייה: 8ק\"מ/8קמ\"ש = 1 שעה. מישור: 16ק\"מ/16קמ\"ש = 1 שעה. סה\"כ 2 שעות)"},
-        q8: {A: "א) 11:15", B: "ב) 11:30", C: "ג) 11:45", D: "ד) 12:00", explanation: "(09:45 + 2 שעות = 11:45)"},
-        q9: {A: "א) 200 ש\"ח", B: "ב) 280 ש\"ח", C: "ג) 300 ש\"ח", D: "ד) 320 ש\"ח", explanation: "((4 שעות * 30 ש\"ח) + (5 שעות * 40 ש\"ח) = 120 + 200 = 320 ש\"ח)"},
-        q10: {A: "א) 60 ש\"ח", B: "ב) 70 ש\"ח", C: "ג) 80 ש\"ח", D: "ד) 90 ש\"ח", explanation: "(320 ש\"ח / 4 = 80 ש\"ח)"},
-        q11: {A: "א) 40 ש\"ח", B: "ב) 48 ש\"ח", C: "ג) 64 ש\"ח", D: "ד) 80 ש\"ח", explanation: "(נשאר 320-80=240 ש\"ח. 20% מ-240 הם 48 ש\"ח)"},
-        q12: {A: "א) 192 ש\"ח", B: "ב) 200 ש\"ח", C: "ג) 240 ש\"ח", D: "ד) 180 ש\"ח", explanation: "(240 ש\"ח - 48 ש\"ח = 192 ש\"ח)"},
-        q13: {A: "א) 3/7", B: "ב) 7/10", C: "ג) 9/10", D: "ד) 3/10", explanation: "(1/2 = 5/10. 2/5 = 4/10. הסכום 5/10 + 4/10 = 9/10)"},
-        q14: {A: "א) 2", B: "ב) 3", C: "ג) 5", D: "ד) 7", explanation: "(אדומים: 1/3 מ-15 = 5. כחולים: 5+2 = 7. ירוקים: 15 - 5 - 7 = 3)"},
-        q15: {A: "א) 100 ש\"ח", B: "ב) 105 ש\"ח", C: "ג) 110 ש\"ח", D: "ד) 120 ש\"ח", explanation: "(הנחה של 30% מ-150 היא 45 ש\"ח. המחיר החדש: 150-45=105 ש\"ח)"},
-        q16: {A: "א) 1/2", B: "ב) 2/5", C: "ג) 3/8", D: "ד) כולם שווים", explanation: "(1/2=0.5, 2/5=0.4, 3/8=0.375. הקטן ביותר הוא 3/8)"},
-        q17: {A: "א) 30", B: "ב) 32", C: "ג) 36", D: "ד) 49", explanation: "(זו סדרת הריבועים: 1*1, 2*2, 3*3, 4*4, 5*5. הבא הוא 6*6=36)"},
-        q18: {A: "א) 3", B: "ב) 4", C: "ג) 5", D: "ד) 6", explanation: "(צהובים: 1/4 מ-12=3. כחולים: 1/3 מ-12=4. אדומים: 12-3-4=5)"},
-        q19: {A: "א) 10", B: "ב) 12", C: "ג) 15", D: "ד) 18", explanation: "(היום גילו 7+5=12. בעוד 3 שנים יהיה בן 12+3=15)"},
-        q20: {A: "א) 15", B: "ב) 20", C: "ג) 25", D: "ד) 40", explanation: "(100 / (4*5) + 15 = 100 / 20 + 15 = 5 + 15 = 20)"}
+        q1: {A: "א) 35 נקודות", B: "ב) 40 נקודות", C: "ג) 45 נקודות", D: "ד) 50 נקודות", explanation: "(80 סך הכל - 35 במחצית ראשונה = 45 נקודות)"},
+        q2: {A: "א) 15 נקודות", B: "ב) 20 נקודות", C: "ג) 25 נקודות", D: "ד) 30 נקודות", explanation: "(1/4 מ-80 נקודות = 20 נקודות)"},
+        q3: {A: "א) 50%", B: "ב) 80%", C: "ג) 90%", D: "ד) 100%", explanation: "(20 נקודות / 2 נק' לקליעה = 10 קליעות מוצלחות. 10 קליעות מתוך 10 זריקות = 100% הצלחה)"},
+        q4: {A: "א) 20 נקודות", B: "ב) 30 נקודות", C: "ג) 45 נקודות", D: "ד) 60 נקודות", explanation: "(היריבה קלעה 2/3 מ-90 = 60 נקודות. ההפרש: 90 - 60 = 30 נקודות)"},
+        q5: {A: "א) 800 ש\"ח", B: "ב) 1,000 ש\"ח", C: "ג) 1,200 ש\"ח", D: "ד) 1,500 ש\"ח", explanation: "(15% מ-8,000 = 0.15 * 8000 = 1,200 ש\"ח)"},
+        q6: {A: "א) 6,500 ש\"ח", B: "ב) 6,800 ש\"ח", C: "ג) 7,000 ש\"ח", D: "ד) 7,200 ש\"ח", explanation: "(8,000 - 1,200 (חיסכון) = 6,800 ש\"ח)"},
+        q7: {A: "א) 3,400 ש\"ח", B: "ב) 4,800 ש\"ח", C: "ג) 5,100 ש\"ח", D: "ד) 6,000 ש\"ח", explanation: "(נשארו 6,800. 1/2 שכ\"ד = 3,400. 1/4 מזון = 1,700. יחד 3400+1700=5,100 ש\"ח)"},
+        q8: {A: "א) 1,200 ש\"ח", B: "ב) 1,500 ש\"ח", C: "ג) 1,700 ש\"ח", D: "ד) 2,000 ש\"ח", explanation: "(נשארו להוצאות 6,800. הוציא 5,100. נשאר לו 6800-5100=1,700 ש\"ח)"},
+        q9: {A: "א) 12 ימים", B: "ב) 14 ימים", C: "ג) 15 ימים", D: "ד) 16 ימים", explanation: "(240 עמודים / 15 עמודים ליום = 16 ימים)"},
+        q10: {A: "א) 105 עמודים", B: "ב) 120 עמודים", C: "ג) 135 עמודים", D: "ד) 150 עמודים", explanation: "(בשבוע (7 ימים) קראה 7 * 15 = 105 עמודים. נותרו 240 - 105 = 135 עמודים)"},
+        q11: {A: "א) 15 עמודים", B: "ב) 20.5 עמודים", C: "ג) 22.5 עמודים", D: "ד) 30 עמודים", explanation: "(50% יותר מ-15 זה תוספת של 7.5. קראה 15 + 7.5 = 22.5 עמודים)"},
+        q12: {A: "א) 1/3 מהספר", B: "ב) 1/2 מהספר", C: "ג) 2/3 מהספר", D: "ד) יותר מחצי הספר", explanation: "(קראה 105 עמודים ב-7 ימים + 22.5 ביום השמיני = 127.5 עמודים. חצי מהספר הוא 120. לכן קראה יותר מחצי)"},
+        q13: {A: "א) 16 מ\"ר", B: "ב) 32 מ\"ר", C: "ג) 48 מ\"ר", D: "ד) 64 מ\"ר", explanation: "(שטח ריבוע = צלע * צלע = 8 * 8 = 64 מ\"ר)"},
+        q14: {A: "א) 8 מ\"ר", B: "ב) 12 מ\"ר", C: "ג) 16 מ\"ר", D: "ד) 32 מ\"ר", explanation: "(1/4 מ-64 מ\"ר = 16 מ\"ר)"},
+        q15: {A: "א) 48 צבעונים", B: "ב) 64 צבעונים", C: "ג) 96 צבעונים", D: "ד) 128 צבעונים", explanation: "(השטח שנשאר: 64 - 16 = 48 מ\"ר. 48 מ\"ר / 0.5 מ\"ר לצבעוני = 96 צבעונים)"},
+        q16: {A: "א) שעה אחת", B: "ב) שעה וחצי", C: "ג) שעתיים", D: "ד) שעתיים וחצי", explanation: "(96 צבעונים / 8 צבעונים ל-10 דקות = 12 מחזורים של 10 דקות. 12 * 10 = 120 דקות = שעתיים)"},
+        q17: {A: "א) 1", B: "ב) 12", C: "ג) 15", D: "ד) 18", explanation: "(100 / (25) * 3 = 4 * 3 = 12)"},
+        q18: {A: "א) 2/3", B: "ב) 60%", C: "ג) הם שווים", D: "ד) אי אפשר לדעת", explanation: "(2/3 = 0.666... , 60% = 0.60. לכן 2/3 גדול יותר)"},
+        q19: {A: "א) 12", B: "ב) 15", C: "ג) 18", D: "ד) 24", explanation: "(אם המספר הקטן הוא X, הגדול הוא X+6. יחד X+X+6 = 30. 2X=24, X=12. המספר הגדול הוא 12+6 = 18)"},
+        q20: {A: "א) 24", B: "ב) 30", C: "ג) 32", D: "ד) 36", explanation: "(הסדרה היא הכפלה ב-2 כל פעם. 16 * 2 = 32)"}
     };
     
-    // Correction for Q5 which was originally a recipe question
-    answerDisplayTexts.q5 = {A: "א) 6 ק\"מ", B: "ב) 8 ק\"מ", C: "ג) 10 ק\"מ", D: "ד) 12 ק\"מ", explanation: "(1/3 מ-24 ק\"מ = 8 ק\"מ)"};
+    // Correction for Q3 due to potential ambiguity
+    correctAnswers.q3 = 'D'; // Let's assume it was 100% since no missed shots were mentioned. This is a bit of a trick question.
+    // If we assume he only made shots worth 2 points, 20 points = 10 successful shots. If he took 10 shots, it's 100%.
+    answerDisplayTexts.q3.explanation = "(כדי לקלוע 20 נקודות בקליעות של 2, צריך 10 קליעות. אם הוא זרק 10 פעמים וקלע 10 פעמים, אחוז ההצלחה הוא 100%)";
 
     const pointsPerQuestion = 6;
     const totalQuestions = Object.keys(correctAnswers).length;
@@ -391,9 +424,10 @@
     let correctlyAnsweredInSession = {};
     let currentAttemptInCycle = 0;
 
-    // ... (Остальной JavaScript код остается таким же, как в предыдущем ответе)
-    // Копирование той же логики submitQuiz, resetFullQuiz и т.д.
-    
+    // ... (Остальной JavaScript код остается таким же, как в предыдущих ответах. 
+    // Я не буду его повторять, чтобы не загромождать ответ.
+    // Просто скопируйте всю секцию <script> из предыдущего ответа, она универсальна.)
+
     function updateAttemptCounterDisplay() {
         const attemptDisplay = document.getElementById('attempt-counter-display');
         if (currentAttemptInCycle <= maxAttemptsPerCycle) {
@@ -593,8 +627,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Since the previous fix for Q13 was quite specific, I removed it and corrected the question/answers directly in the source code.
-        // This is a cleaner approach.
         updateAttemptCounterDisplay();
         document.querySelector('.reset-button').style.display = 'none';
     });
